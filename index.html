@@ -7,51 +7,48 @@
   <style>
     body {
       font-family: "Segoe UI", sans-serif;
-      background: #f0f2f5;
+      margin: 0;
+      background: url('e+banner-nologo.png') no-repeat center center fixed;
+      background-size: cover;
+      backdrop-filter: blur(5px);
       display: flex;
       flex-direction: column;
       align-items: center;
       padding: 40px;
-      animation: fadeIn 1s ease-in;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      min-height: 100vh;
+      color: white;
     }
 
     .container {
-      background: white;
+      background: rgba(0, 0, 0, 0.7);
       border-radius: 16px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
       padding: 40px;
       max-width: 700px;
       width: 100%;
-      animation: fadeIn 1.2s ease-in;
+      animation: fadeIn 1s ease-in;
     }
 
     h1 {
       text-align: center;
-      color: #333;
+      color: #fff;
       margin-bottom: 24px;
-      animation: fadeIn 1.4s ease-in;
     }
 
     .license-box {
       max-height: 320px;
       overflow-y: auto;
-      border: 1px solid #ddd;
+      border: 1px solid #555;
       padding: 20px;
       margin-bottom: 24px;
       font-size: 15px;
-      background: #fafafa;
+      background: rgba(255, 255, 255, 0.05);
       white-space: pre-wrap;
       border-radius: 8px;
-      animation: fadeIn 1.6s ease-in;
     }
 
     a {
-      color: #007bff;
+      color: #6cb2ff;
       text-decoration: none;
     }
 
@@ -84,12 +81,30 @@
     }
 
     .download-btn:disabled {
-      background-color: #aaa;
+      background-color: #777;
       cursor: not-allowed;
     }
 
-    .download-btn:hover:enabled {
-      background-color: #0069d9;
+    .progress-container {
+      width: 100%;
+      background-color: #444;
+      border-radius: 10px;
+      overflow: hidden;
+      height: 20px;
+      margin-top: 20px;
+      display: none;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background-color: #00d1ff;
+      width: 0%;
+      transition: width 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
@@ -97,7 +112,7 @@
   <div class="container">
     <h1>Download Essentials+</h1>
 
-    <div class="license-box" id="license">
+    <div class="license-box">
 Essentials+ License  
 Created by stanlxie and HealiX_YT
 
@@ -118,15 +133,46 @@ You can view the full license <a href="https://github.com/essentialspluss/essent
 
     <div>
       <button class="agree-btn" onclick="agree()">Agree to Terms</button>
-      <a id="downloadLink" href="EssentialsPlus.zip" download style="text-decoration: none;">
-        <button class="download-btn" id="downloadBtn" disabled>Download Essentials+</button>
-      </a>
+      <button class="download-btn" id="downloadBtn" onclick="startDownload()" disabled>Download Essentials+</button>
+    </div>
+
+    <div class="progress-container" id="progressContainer">
+      <div class="progress-bar" id="progressBar"></div>
     </div>
   </div>
 
   <script>
+    let agreed = false;
+
     function agree() {
+      agreed = true;
       document.getElementById('downloadBtn').disabled = false;
+    }
+
+    function startDownload() {
+      if (!agreed) return;
+
+      const progressContainer = document.getElementById('progressContainer');
+      const progressBar = document.getElementById('progressBar');
+      let progress = 0;
+
+      progressContainer.style.display = 'block';
+
+      const interval = setInterval(() => {
+        progress += Math.random() * 15;
+        if (progress >= 100) {
+          progress = 100;
+          clearInterval(interval);
+          // Simulate file download
+          const link = document.createElement('a');
+          link.href = 'EssentialsPlus.zip'; // Replace with your file path
+          link.download = 'EssentialsPlus.zip';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        }
+        progressBar.style.width = progress + '%';
+      }, 400);
     }
   </script>
 </body>
