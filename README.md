@@ -1,1 +1,3 @@
-# essentialspluss.github.io
+# ✨ Essentials+
+
+Want to know more about Essentials+? Check our our post on the ROBLOX Devforum.
