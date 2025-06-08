@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Download Essentials+</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px;
+    }
+
+    .container {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 30px;
+      max-width: 600px;
+      width: 100%;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    .license-box {
+      max-height: 300px;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-bottom: 20px;
+      font-size: 14px;
+      background: #fafafa;
+      white-space: pre-wrap;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .agree-btn {
+      background-color: #4CAF50;
+      color: white;
+      margin-right: 10px;
+    }
+
+    .download-btn {
+      background-color: #007BFF;
+      color: white;
+    }
+
+    .download-btn:disabled {
+      background-color: #999;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Download Essentials+</h1>
+    
+    <div class="license-box" id="license">
+Essentials+ License
+Created by stanlxie and HealiX_YT
+
+You may:
+- Use and modify this software freely.
+- Share it within small, private groups.
+
+You may not:
+- Resell it without explicit permission.
+- Modify or remove any donation or supporter systems.
+- Use it for malicious or abusive purposes.
+- Publicly share it without permission.
+
+By clicking "Agree", you accept these terms.
+    </div>
+
+    <div>
+      <button class="agree-btn" onclick="agree()">Agree to Terms</button>
+      <a id="downloadLink" href="EssentialsPlus.zip" download style="text-decoration: none;">
+        <button class="download-btn" id="downloadBtn" disabled>Download Essentials+</button>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    function agree() {
+      document.getElementById('downloadBtn').disabled = false;
+    }
+  </script>
+</body>
+</html>
