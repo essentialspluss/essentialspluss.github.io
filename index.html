@@ -1,75 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Download Essentials+</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #f2f2f2;
+      font-family: "Segoe UI", sans-serif;
+      background: #f0f2f5;
       display: flex;
       flex-direction: column;
       align-items: center;
       padding: 40px;
+      animation: fadeIn 1s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .container {
       background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      padding: 30px;
-      max-width: 600px;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+      max-width: 700px;
       width: 100%;
+      animation: fadeIn 1.2s ease-in;
     }
 
     h1 {
       text-align: center;
       color: #333;
+      margin-bottom: 24px;
+      animation: fadeIn 1.4s ease-in;
     }
 
     .license-box {
-      max-height: 300px;
+      max-height: 320px;
       overflow-y: auto;
-      border: 1px solid #ccc;
-      padding: 15px;
-      margin-bottom: 20px;
-      font-size: 14px;
+      border: 1px solid #ddd;
+      padding: 20px;
+      margin-bottom: 24px;
+      font-size: 15px;
       background: #fafafa;
       white-space: pre-wrap;
+      border-radius: 8px;
+      animation: fadeIn 1.6s ease-in;
+    }
+
+    a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
     }
 
     button {
-      padding: 10px 20px;
+      padding: 12px 24px;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
       cursor: pointer;
       font-size: 16px;
+      transition: all 0.3s ease;
     }
 
     .agree-btn {
-      background-color: #4CAF50;
+      background-color: #28a745;
       color: white;
-      margin-right: 10px;
+      margin-right: 12px;
+    }
+
+    .agree-btn:hover {
+      background-color: #218838;
     }
 
     .download-btn {
-      background-color: #007BFF;
+      background-color: #007bff;
       color: white;
     }
 
     .download-btn:disabled {
-      background-color: #999;
+      background-color: #aaa;
       cursor: not-allowed;
+    }
+
+    .download-btn:hover:enabled {
+      background-color: #0069d9;
     }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>Download Essentials+</h1>
-    
+
     <div class="license-box" id="license">
-Essentials+ License
+Essentials+ License  
 Created by stanlxie and HealiX_YT
 
 You may:
@@ -84,7 +113,7 @@ You may not:
 
 By clicking "Agree", you accept these terms and acknowledge that we can change these at any time.
 
-You can view the full license (here)[https://github.com/essentialspluss/essentialspluss.github.io/blob/main/LICENSE.md].
+You can view the full license <a href="https://github.com/essentialspluss/essentialspluss.github.io/blob/main/LICENSE.md" target="_blank">here</a>.
     </div>
 
     <div>
