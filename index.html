@@ -3,31 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Essentials+ Products</title>
+    <title>Essentials+ Store</title>
     <style>
+        /* General Styling */
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            margin: 20px;
+            margin: 0;
+            padding: 0;
+            background: url('background-image.jpg') no-repeat center center fixed;
+            background-size: cover;
         }
-        .card {
-            width: 300px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
+
+        /* Glassmorphism Topbar */
+        .topbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .topbar img {
+            height: 40px; /* Adjust based on your logo */
+            margin-left: 20px;
+        }
+
+        .topbar h1 {
+            flex-grow: 1;
+            text-align: center;
+            color: white;
+        }
+
+        /* Main Section */
+        .main-section {
+            margin-top: 80px; /* Offset for fixed topbar */
             padding: 20px;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-            margin: auto;
+            color: white;
         }
+
+        /* Product Cards */
+        .card-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .card {
+            width: 250px;
+            padding: 15px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
         .card img {
             width: 100%;
             border-radius: 10px;
         }
+
         .editable {
             border: none;
             width: 100%;
             font-size: 16px;
             text-align: center;
+            background: transparent;
+            color: white;
         }
+
         .button {
             background-color: #007bff;
             color: white;
@@ -37,6 +88,8 @@
             cursor: pointer;
             margin-top: 10px;
         }
+
+        /* License Modal */
         .modal {
             display: none;
             position: fixed;
@@ -53,13 +106,39 @@
 </head>
 <body>
 
-    <div class="card">
-        <img src="product-image.jpg" alt="Product Image">
-        <input class="editable" type="text" value="Essentials+">
-        <p>Product description goes here...</p>
-        <button class="button" onclick="openLicense()">Download Product</button>
+    <!-- Topbar -->
+    <div class="topbar">
+        <img src="logo.png" alt="Essentials+ Logo">
+        <h1>Essentials+ Store</h1>
     </div>
 
+    <!-- Main Section -->
+    <div class="main-section">
+        <h2>Our Products</h2>
+        
+        <div class="card-container">
+            <!-- Product Card -->
+            <div class="card">
+                <img src="product-image.jpg" alt="Product Image">
+                <input class="editable" type="text" value="Product Name">
+                <p>Product description goes here...</p>
+                <button class="button" onclick="openLicense()">Download Product</button>
+            </div>
+
+            <!-- Coming Soon Cards -->
+            <div class="card">
+                <h3>Coming Soon</h3>
+                <p>New product launching soon!</p>
+            </div>
+
+            <div class="card">
+                <h3>Coming Soon</h3>
+                <p>Stay tuned for more updates!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- License Modal -->
     <div id="licenseModal" class="modal">
         <h3>Essentials+ License</h3>
         <p>Created by stanlxie and HealiX_YT</p>
