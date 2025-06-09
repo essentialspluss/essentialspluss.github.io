@@ -1,179 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Download Essentials+</title>
-  <style>
-    body {
-      font-family: "Segoe UI", sans-serif;
-      margin: 0;
-      background: url('e+banner-nologo.png') no-repeat center center fixed;
-      background-size: cover;
-      backdrop-filter: blur(5px);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 40px;
-      min-height: 100vh;
-      color: white;
-    }
-
-    .container {
-      background: rgba(0, 0, 0, 0.7);
-      border-radius: 16px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-      padding: 40px;
-      max-width: 700px;
-      width: 100%;
-      animation: fadeIn 1s ease-in;
-    }
-
-    h1 {
-      text-align: center;
-      color: #fff;
-      margin-bottom: 24px;
-    }
-
-    .license-box {
-      max-height: 320px;
-      overflow-y: auto;
-      border: 1px solid #555;
-      padding: 20px;
-      margin-bottom: 24px;
-      font-size: 15px;
-      background: rgba(255, 255, 255, 0.05);
-      white-space: pre-wrap;
-      border-radius: 8px;
-    }
-
-    a {
-      color: #6cb2ff;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    button {
-      padding: 12px 24px;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      font-size: 16px;
-      transition: all 0.3s ease;
-    }
-
-    .agree-btn {
-      background-color: #28a745;
-      color: white;
-      margin-right: 12px;
-    }
-
-    .agree-btn:hover {
-      background-color: #218838;
-    }
-
-    .download-btn {
-      background-color: #007bff;
-      color: white;
-    }
-
-    .download-btn:disabled {
-      background-color: #777;
-      cursor: not-allowed;
-    }
-
-    .progress-container {
-      width: 100%;
-      background-color: #444;
-      border-radius: 10px;
-      overflow: hidden;
-      height: 20px;
-      margin-top: 20px;
-      display: none;
-    }
-
-    .progress-bar {
-      height: 100%;
-      background-color: #00d1ff;
-      width: 0%;
-      transition: width 0.4s ease;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Essentials+ Products</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        .card {
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            margin: auto;
+        }
+        .card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .editable {
+            border: none;
+            width: 100%;
+            font-size: 16px;
+            text-align: center;
+        }
+        .button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            width: 300px;
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Download Essentials+</h1>
 
-    <div class="license-box">
-Essentials+ License  
-Created by stanlxie and HealiX_YT
-
-You may:
-- Use and modify this software freely.
-- Share it within small, private groups.
-
-You may not:
-- Resell it without explicit permission.
-- Modify or remove any donation or supporter systems (this is how we fund development!).
-- Use it for malicious or abusive purposes.
-- Publicly share it without permission.
-
-By clicking "Agree", you accept these terms and acknowledge that we can change these at any time.
-
-You can view the full license <a href="https://github.com/essentialspluss/essentialspluss.github.io/blob/main/LICENSE.md" target="_blank">here</a>.
+    <div class="card">
+        <img src="product-image.jpg" alt="Product Image">
+        <input class="editable" type="text" value="Essentials+">
+        <p>Product description goes here...</p>
+        <button class="button" onclick="openLicense()">Download Product</button>
     </div>
 
-    <div>
-      <button class="agree-btn" onclick="agree()">Agree to Terms</button>
-      <button class="download-btn" id="downloadBtn" onclick="startDownload()" disabled>Download Essentials+</button>
+    <div id="licenseModal" class="modal">
+        <h3>Essentials+ License</h3>
+        <p>Created by stanlxie and HealiX_YT</p>
+        <p>You may:<br>- Use and modify this software freely.<br>- Share it within small, private groups.</p>
+        <p>You may not:<br>- Resell it without explicit permission.<br>- Modify or remove any donation/supporter systems.<br>- Use it for malicious purposes.<br>- Publicly share it without permission.</p>
+        <p><a href="https://github.com/essentialspluss/essentialspluss.github.io/blob/main/LICENSE.md" target="_blank">View full license</a></p>
+        <button class="button" onclick="agreeLicense()">Agree</button>
     </div>
 
-    <div class="progress-container" id="progressContainer">
-      <div class="progress-bar" id="progressBar"></div>
-    </div>
-  </div>
-
-  <script>
-    let agreed = false;
-
-    function agree() {
-      agreed = true;
-      document.getElementById('downloadBtn').disabled = false;
-    }
-
-    function startDownload() {
-      if (!agreed) return;
-
-      const progressContainer = document.getElementById('progressContainer');
-      const progressBar = document.getElementById('progressBar');
-      let progress = 0;
-
-      progressContainer.style.display = 'block';
-
-      const interval = setInterval(() => {
-        progress += Math.random() * 15;
-        if (progress >= 100) {
-          progress = 100;
-          clearInterval(interval);
-          // Simulate file download
-          const link = document.createElement('a');
-          link.href = 'EssentialsPlus.zip'; // Replace with your file path
-          link.download = 'EssentialsPlus.zip';
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
+    <script>
+        function openLicense() {
+            document.getElementById('licenseModal').style.display = 'block';
         }
-        progressBar.style.width = progress + '%';
-      }, 400);
-    }
-  </script>
+
+        function agreeLicense() {
+            document.getElementById('licenseModal').style.display = 'none';
+            alert("You have agreed to the license. The download will start soon.");
+            // Add download logic here
+        }
+    </script>
+
 </body>
 </html>
